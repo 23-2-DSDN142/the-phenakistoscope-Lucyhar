@@ -1,9 +1,9 @@
-const SLICE_COUNT = 10;
+const SLICE_COUNT = 15;
 
 function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
   pScope.scale_for_screen(true);
-  pScope.draw_layer_boundaries(true);
+  pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
 }
@@ -19,20 +19,22 @@ function setup_layers(pScope){
   var layer2 = new PLayer(squares);
   layer2.mode( RING );
   layer2.set_boundary( 0, 400 );
+  
 }
 
 function faces(x, y, animation, pScope){
-  
+  translate(0, 0);
   scale(animation.frame*2);
 
-  ellipse(0,0,50,50); // draw head
-  fill(30);
-  ellipse(-10,-10,10,10); //draw eye
-  ellipse(10,-10,10,10); // draw eye
-  arc(0,10,20,10,0,180); // draw mouth
-
+// bubbles
+stroke(2, 188, 250); //darker blue 
+strokeWeight(2);
+fill(188, 232, 247);
+ circle(100, 130,30); 
+ circle(150, 110,40); 
+ circle(60, 110,20); 
+ circle(190, 120,20); 
 }
-
 function squares(x, y, animation, pScope){
 
   // this is how you set up a background for a specific layer
@@ -40,10 +42,34 @@ function squares(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
 
-  fill(66, 135, 245)
+  fill(42,75,90)
   arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
-  fill(255)
+  fill("#A7F1A8")
   rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
 
+  //cherrys 1
+push();
+translate (-60,60);
+stroke('#008000'); //green stalk
+strokeWeight(2);
+line( 100, 90, 110, 60) // left stalk
+line( 110, 60, 125, 100) // right stalk
+
+
+fill('#D2042D' );//red
+stroke('#008000'); //not showing
+strokeWeight(0);
+
+
+circle(100, 100, 20); //cherrys
+circle(122, 100, 20); //cherrys
+
+
+
+
+fill('#008000' );//green leaf
+rotate(-30);
+ellipse(72, 122, 20,5); // leaf
+pop();
 }
