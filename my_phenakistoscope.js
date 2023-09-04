@@ -27,7 +27,7 @@ function faces(x, y, animation, pScope){
   scale(animation.frame*2);
 
 // bubbles
-stroke(2, 188, 250); //darker blue 
+stroke(18, 70, 105); //darker blue 
 strokeWeight(2);
 fill(188, 232, 247);
  circle(100, 130,30); 
