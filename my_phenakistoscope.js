@@ -49,27 +49,6 @@ function squares(x, y, animation, pScope){
   rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
 
   //cherrys 1
-push();
-translate (-60,60);
-stroke('#008000'); //green stalk
-strokeWeight(2);
-line( 100, 90, 110, 60) // left stalk
-line( 110, 60, 125, 100) // right stalk
-
-
-fill('#D2042D' );//red
-stroke('#008000'); //not showing
-strokeWeight(0);
-
-
-circle(100, 100, 20); //cherrys
-circle(122, 100, 20); //cherrys
-
-
-
-
 fill('#008000' );//green leaf
-rotate(-30);
 ellipse(72, 122, 20,5); // leaf
-pop();
 }
