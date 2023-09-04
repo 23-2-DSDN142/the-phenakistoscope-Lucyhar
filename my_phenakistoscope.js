@@ -50,5 +50,5 @@ function squares(x, y, animation, pScope){
 
   //cherrys 1
 fill('#008000' );//green leaf
-ellipse(72, 122, 20,5); // leaf
+ellipse(72, 122, 20,85); // leaf
 }
