@@ -6,6 +6,7 @@ function setup_pScope(pScope){
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
+  pScope.load_image(seaweed, png);
 }
 
 function setup_layers(pScope){
@@ -64,7 +65,8 @@ function squares(x, y, animation, pScope){
   arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
   fill("#A7F1A8")
-  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
+  pScope.draw_image(seaweed, -10, -100-animation.wave()*50, 50, 50);
+  //rect(-10,-100-animation.wave()*50,20,20) // .wave is a cosine wave btw
 
   // Body
   fill(255, 165, 0); // Goldfish color (orange)
