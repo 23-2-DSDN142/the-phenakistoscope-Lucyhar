@@ -6,55 +6,70 @@ function setup_pScope(pScope){
   pScope.draw_layer_boundaries(false);
   pScope.set_direction(CCW);
   pScope.set_slice_count(SLICE_COUNT);
-  pScope.load_image(seaweed, png);
+  pScope.load_image("twodolphin", "png");
 }
 
 function setup_layers(pScope){
   new PLayer(null, 220);  //lets us draw the whole circle background, ignoring the boundaries
   
+  var backLayer = new PLayer(bkgrd);
+  backLayer.mode(RING);
   
-  var layer1 = new PLayer(faces, bubbleBack);
+  var layer1 = new PLayer(bubbleBack);
   layer1.mode( SWIRL(5) );
   layer1.set_boundary( 200, 1000 );
 
-  var layer2 = new PLayer(squares);
-  layer2.mode( RING );
-  layer2.set_boundary( 0, 400 );
+  var layer2 = new PLayer(fish);
+  layer2.mode( SWIRL(5) );
+  layer2.set_boundary( 0, 0 );
 
+  var layer3 = new PLayer(twodolphin);
+  layer3.mode( SWIRL(5) );
+  layer3.set_boundary( 200, 1400 );
   
+  
+ 
 }
-
-function bubbleBack(animation, pScope){
+function bkgrd(x, y, animation, pScope){
   pScope.fill_background(0,84,119);
   noFill();
-  strokeWeight(150);
+  strokeWeight(350);
   stroke('#F0EDB4'); //sand  colour 
   ellipse(0, 0, 2000);
-  
-
-
-
 }
 
-function faces(x, y, animation, pScope){
+function bubbleBack(x, y, animation, pScope){
+  push();
   translate(0, 0);
-  scale(animation.frame*2);
-
-
+  scale (0.2);
+  scale(animation.frame*2.5);
 
 // bubbles
 strokeWeight(2);
 stroke(90, 184, 242); //darker blue 
 fill(212, 238, 255);
- circle(10, 30,30); 
- circle(55, 5,40); 
- circle(30, -55,20); 
- circle(-50, 80,20); 
+ circle(230,200,160); 
+ circle(90, 10,180); 
+ circle(130, -255,120); 
+ circle(-150, 180,150); 
+ pop();
+}
+
+function twodolphin(x, y, animation, pScope){
+  push();
+  translate(0, 0);
+  scale (5);
+  scale(animation.frame*5);
+ 
+
+  pScope.draw_image("twodolphin",0,4000);
+ 
+ pop();
 }
 
 
 
-function squares(x, y, animation, pScope){
+function fish(x, y, animation, pScope){
 
   // this is how you set up a background for a specific layer
   let angleOffset = (360 / SLICE_COUNT) / 2
@@ -65,7 +80,7 @@ function squares(x, y, animation, pScope){
   arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
   fill("#A7F1A8")
-  pScope.draw_image(seaweed, -10, -100-animation.wave()*50, 50, 50);
+  // pScope.draw_image(twodolphin, -10, -100-animation.wave()*50, 50, 50);
   //rect(-10,-100-animation.wave()*50,20,20) // .wave is a cosine wave btw
 
   // Body
